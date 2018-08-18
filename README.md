@@ -1,5 +1,6 @@
 # 0x15. C - Simple Shell
-In this project, we created a simple command line shell for UNIX and Linux called 'bish.'
+In this project, we created a simple command line shell for UNIX and Linux called **bish**, short for *bishounen (Japanese for 'pretty boy')*.
+It is also a recursive acronym for **_B**_ish, **I**t's a **SH**ell_.
 
 ![bish](https://github.com/jogden4195/simple_shell/blob/master/img/bish-logo.png)
 
