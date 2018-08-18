@@ -1,10 +1,8 @@
-#include "header.h"
+#include "bish.h"
 
 int main(void)
 {
 	int shell_on = 1;
-
-	char curr_loc[1024];
 	size_t buf_size = 100;
 	char buf[10];
 	char *usr_cmd = buf;
@@ -14,16 +12,15 @@ int main(void)
 
 	while (shell_on)
 	{
-		getcwd(curr_loc, sizeof(curr_loc));
-		printf("b i s h :%s> ", curr_loc);
+		printf("b i s h :~$ ");
 
 		getline(&usr_cmd, &buf_size, stdin);
 		tok = strtok(usr_cmd, " \n");
 		if (tok == NULL)
-			printf("Enter a command.\n");
+			printf("Plz enter a command.\n");
 		else
 		{
-			if (strcmp(tok, "exit") == 0)
+			if (_strcmp(tok, "exit") == 0)
 				shell_on = 0;
 			else
 			{
