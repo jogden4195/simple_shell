@@ -1,5 +1,7 @@
-# Simple_Shell
-In this project, we created a simple command line shell for UNIX and Linux.
+# 0x15. C - Simple Shell
+In this project, we created a simple command line shell for UNIX and Linux called 'bish.'
+
+![bish](https://github.com/jogden4195/simple_shell/blob/master/img/bish-logo.png)
 
 ## Goals of this project
 At the end of this project, we are expected to be able to explain to anyone, without the help of Google:
@@ -27,5 +29,3 @@ Jenn Ogden - https://github.com/jogden4195
 * All files should follow Betty style and document guidelines
 * No more than 5 functions per file
 * Header files should be include guarded
-
-
