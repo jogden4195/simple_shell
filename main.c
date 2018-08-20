@@ -42,6 +42,7 @@ int main(void)
 
 		getline(&usr_cmd, &buf_size, stdin);
 		tok = strtok(usr_cmd, " \n");
+
 		if (tok == NULL)
 			write(STDIN_FILENO, "", 1);
 		else
@@ -63,15 +64,11 @@ int main(void)
 					 * get array of commands
 					 * i.e. ls -l -> ["ls", "-l"]
 					 */
-						while (tok != NULL)
-						{
-							argv[i] = malloc(_strlen(tok) + 1);
-							_strcpy(argv[i], tok);
-							tok = strtok(NULL, " ");
-							i++;
-						}
+						argv[i] = malloc(_strlen(tok) + 1);
+						_strcpy(argv[i], tok);
+						tok = strtok(NULL, " ");
+						i++;
 					}
-
 
 				/*
 				 * Make the last element of the array so
@@ -87,16 +84,15 @@ int main(void)
 					execve(argv[0], argv, NULL);
 					perror(argv[0]);
 
-					/*
-					 * if execve doesn't work out (eg if a
-					 * nonvalid command is given), we need
-					 * an exit statement so the child process
-					 * dies and we reenter the parent.
-					 */
+				/*
+				 * if execve doesn't work out (eg if a
+				 * nonvalid command is given), we need
+				 * an exit statement so the child process
+				 * dies and we reenter the parent.
+				 */
 
 					exit(1);
 				}
-
 				/*
 				 * Gotta wait for child to die before makin
 				 * another one :(
