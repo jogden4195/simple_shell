@@ -43,7 +43,7 @@ int main(void)
 		getline(&usr_cmd, &buf_size, stdin);
 		tok = strtok(usr_cmd, " \n");
 		if (tok == NULL)
-			printf("Plz enter a command.\n");
+			write(STDIN_FILENO, "", 1);
 		else
 		{
 			if (_strcmp(tok, "exit") == 0)
@@ -52,10 +52,7 @@ int main(void)
 			{
 				pid = fork();
 				if (pid < 0)
-				{
-					perror("Fork() error.");
-					return (-1);
-				}
+					perror("Error");
 				else if (pid == 0)
 				{
 					while (tok)
@@ -88,8 +85,7 @@ int main(void)
 				 * open after completing execve.
 				 */
 					execve(argv[0], argv, NULL);
-					printf("Error : No command found.\n");
-					return (-1);
+					perror(argv[0]);
 
 					/*
 					 * if execve doesn't work out (eg if a
