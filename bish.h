@@ -10,5 +10,13 @@
 
 int _strcmp(char *s1, char *s2);
 int _strlen(char *str);
+char *_strcpy(char *dest, char *src);
+
+struct commando
+{
+	char *usr_cmd;
+	char * (*func)(char *ptr);
+	char *flags;
+}
 
 #endif /* BISH_H */
