@@ -56,6 +56,7 @@ int main(void)
 					perror("Error");
 				else if (pid == 0)
 				{
+
 					while (tok)
 					{
 
@@ -66,7 +67,8 @@ int main(void)
 					 */
 						argv[i] = malloc(_strlen(tok) + 1);
 						_strcpy(argv[i], tok);
-						tok = strtok(NULL, " ");
+						printf("argv[%d]: %s", i, tok);
+						tok = strtok(NULL, " \n");
 						i++;
 					}
 
@@ -74,9 +76,7 @@ int main(void)
 				 * Make the last element of the array so
 				 * execve works properly.
 				 */
-
 					argv[i] = NULL;
-
 				/*
 				 * Making child process so bish will remain
 				 * open after completing execve.
