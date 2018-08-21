@@ -1,6 +1,11 @@
 #include "bish.h"
 
 /*
+ * Leo edit, 8/21 @ 12:37pm:
+ * - created macro DELIMS in bish.h (refer to file for more info)
+ * - created var subtok for handling args after tok
+ * - implemented 'cd' temporarily
+ *
  * Things Jenn added as of 8/20 @ 10:30am:
  * - pid_t variable called pid
  * - exit statement for when we come across a command that
@@ -32,6 +37,7 @@ int main(void)
 	char *usr_cmd = buf;
 	char *argv[100];
 	char *tok;
+	char *subtok;
 	pid_t pid;
 
 	usr_cmd = malloc(buf_size);
@@ -41,7 +47,7 @@ int main(void)
 		printf("b i s h :~$ ");
 
 		getline(&usr_cmd, &buf_size, stdin);
-		tok = strtok(usr_cmd, " \n");
+		tok = strtok(usr_cmd, DELIMS);
 
 		if (tok == NULL)
 			write(STDIN_FILENO, "", 1);
@@ -49,6 +55,22 @@ int main(void)
 		{
 			if (_strcmp(tok, "exit") == 0)
 				shell_on = 0;
+
+			/* built-in function for cd
+			 * subtok is a variable for input AFTER where 
+			 * the tok variable cuts off;
+			 * if nothing is entered, it acts as though
+			 * cd $HOME is input
+			 */
+
+			else if (_strcmp(tok, "cd") == 0)
+			{
+				subtok = strtok(0, DELIMS);
+				if (!subtok)
+					chdir(getenv("HOME")); /* need to replace later with own 'getenv' */
+				else
+					chdir(subtok);
+			}
 			else
 			{
 				pid = fork();
@@ -56,7 +78,6 @@ int main(void)
 					perror("Error");
 				else if (pid == 0)
 				{
-
 					while (tok)
 					{
 
@@ -67,8 +88,7 @@ int main(void)
 					 */
 						argv[i] = malloc(_strlen(tok) + 1);
 						_strcpy(argv[i], tok);
-						printf("argv[%d]: %s", i, tok);
-						tok = strtok(NULL, " \n");
+						tok = strtok(NULL, DELIMS);
 						i++;
 					}
 
