@@ -10,9 +10,12 @@
 
 #define DELIMS " \t\r\n"
 
-int _strcmp(char *s1, char *s2);
+extern char **environ;
+
+int _strcmp(const char *s1, const char *s2);
 int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
+char *_getenv(const char *name);
 
 typedef struct commando
 {
