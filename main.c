@@ -53,7 +53,7 @@ int main(void)
 	{
 
 		getcwd(cwd, sizeof(cwd));
-		printf("*~b i s h~* :: %s~$ ", cwd);
+		_printf("*~b i s h~* :: %s~$ ", cwd);
 
 		getline(&usr_cmd, &buf_size, stdin);
 		tok = strtok(usr_cmd, DELIMS);
