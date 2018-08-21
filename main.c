@@ -1,6 +1,12 @@
 #include "bish.h"
 
 /*
+ * Leo edit, 8/21 @ 3:12pm:
+ * - created _getenv to use for cd (refer to getenv.c for more info)
+ * - used getcwd to print out current directory whenever prompt is present
+ * - updates getcwd whenever cd is called
+ * - added pretty characters to the prompt~*
+ *
  * Leo edit, 8/21 @ 12:37pm:
  * - created macro DELIMS in bish.h (refer to file for more info)
  * - created var subtok for handling args after tok
@@ -39,12 +45,15 @@ int main(void)
 	char *tok;
 	char *subtok;
 	pid_t pid;
+	char cwd[100];
 
 	usr_cmd = malloc(buf_size);
 
 	while (shell_on)
 	{
-		printf("b i s h :~$ ");
+
+		getcwd(cwd, sizeof(cwd));
+		printf("*~b i s h~* :: %s~$ ", cwd);
 
 		getline(&usr_cmd, &buf_size, stdin);
 		tok = strtok(usr_cmd, DELIMS);
@@ -67,9 +76,15 @@ int main(void)
 			{
 				subtok = strtok(0, DELIMS);
 				if (!subtok)
-					chdir(getenv("HOME")); /* need to replace later with own 'getenv' */
+				{
+					chdir(_getenv("HOME"));
+					getcwd(cwd, sizeof(cwd));
+				}
 				else
+				{
 					chdir(subtok);
+					getcwd(cwd, sizeof(cwd));
+				}
 			}
 			else
 			{
