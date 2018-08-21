@@ -8,6 +8,8 @@
 #include <string.h>
 #include <sys/wait.h>
 
+#define DELIMS " \t\r\n"
+
 int _strcmp(char *s1, char *s2);
 int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
