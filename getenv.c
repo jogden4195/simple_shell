@@ -1,5 +1,17 @@
 #include "bish.h"
 
+char *_env(void)
+{
+	int i = 0;
+
+	while (environ[i])
+	{
+		_printf("%s\n", environ[i]);
+		i++;
+	}
+}
+
+
 char *_getenv(const char *name)
 {
 	int i = 0;
