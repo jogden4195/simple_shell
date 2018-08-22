@@ -57,34 +57,6 @@ int _printf(const char *format, ...)
 					return (-1);
 				case '\0':
 					return (-1);
-				case 'b':
-					num = va_arg(val, int);
-					if (num < 0)
-						return (-1);
-					count += binary(num);
-					break;
-				case 'r':
-					var = va_arg(val, char *);
-					if (var == NULL)
-					{
-						var = "(null)";
-						_puts(var);
-						count += print_rev(var);
-						break;
-					}
-					count += print_rev(var);
-					break;
-				case 'R':
-					var = va_arg(val, char *);
-					if (var == NULL)
-					{
-						var = "(null)";
-						_puts(var);
-						count += rot13(var);
-						break;
-					}
-					count += rot13(var);
-					break;
 				default:
 					_putchar('%');
 					_putchar(format[i]);
