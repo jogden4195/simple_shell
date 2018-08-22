@@ -12,7 +12,6 @@
 int _printf(const char *format, ...)
 {
 	char *var;
-	int num;
 	int i, len, count = 0;
 	va_list val;
 
