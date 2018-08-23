@@ -53,7 +53,7 @@ int main(void)
 	pid_t pid;
 	char cwd[100];
 	cmdo cmd[] = {
-	  	{"ls", "/bin/ls"},
+		{"ls", "/bin/ls"},
 		{NULL, NULL}
 	};
 
@@ -105,11 +105,10 @@ int main(void)
 			else
 			{
 				pid = fork();
-				switch(pid)
+				switch (pid)
 				{
 					case -1:
 						perror("Error");
-					
 
 					case 0:
 						while (tok)
@@ -133,7 +132,7 @@ int main(void)
 						argv[i] = NULL;
 
 						i = 0;
-		 				while (cmd[i].usr_cmd)
+						while (cmd[i].usr_cmd)
 						{
 							if (_strcmp(argv[0], cmd[i].usr_cmd) == 0)
 							{
