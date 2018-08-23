@@ -24,6 +24,7 @@ void _puts(char *str);
 int _putchar(char c);
 int print_number(int n);
 void _env(void);
+char *replace_arg(char *argv);
 
 typedef struct commando
 {
