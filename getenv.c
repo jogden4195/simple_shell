@@ -1,5 +1,9 @@
 #include "bish.h"
 
+/**
+ * _env - prints the env
+ * Return: void
+ */
 void _env(void)
 {
 	int i = 0;
@@ -11,7 +15,12 @@ void _env(void)
 	}
 }
 
-
+/**
+ * _getenv - get value of an environment variable
+ * @name: variable to match
+ * Return: the location of the matching variable if sucess;
+ * 0 if not found
+ */
 char *_getenv(const char *name)
 {
 	int i = 0;
