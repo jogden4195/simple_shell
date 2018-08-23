@@ -1,6 +1,6 @@
 #include "bish.h"
 
-char *_env(void)
+void _env(void)
 {
 	int i = 0;
 
