@@ -101,35 +101,38 @@ int main(void)
 			else
 			{
 				pid = fork();
-				if (pid < 0)
-					perror("Error");
-				else if (pid == 0)
+				switch(pid)
 				{
-					while (tok)
-					{
+					case -1:
+						perror("Error");
+					
+
+					case 0:
+						while (tok)
+						{
 
 					/*
 					 * Parsing through the usr cmd to
 					 * get array of commands
 					 * i.e. ls -l -> ["ls", "-l"]
 					 */
-						argv[i] = malloc(_strlen(tok) + 1);
-						_strcpy(argv[i], tok);
-						tok = strtok(NULL, DELIMS);
-						i++;
-					}
+							argv[i] = malloc(_strlen(tok) + 1);
+							_strcpy(argv[i], tok);
+							tok = strtok(NULL, DELIMS);
+							i++;
+						}
 
 				/*
 				 * Make the last element of the array so
 				 * execve works properly.
 				 */
-					argv[i] = NULL;
+						argv[i] = NULL;
 				/*
 				 * Making child process so bish will remain
 				 * open after completing execve.
 				 */
-					execve(argv[0], argv, NULL);
-					perror(argv[0]);
+						execve(argv[0], argv, NULL);
+						perror(argv[0]);
 
 				/*
 				 * if execve doesn't work out (eg if a
@@ -138,14 +141,14 @@ int main(void)
 				 * dies and we reenter the parent.
 				 */
 
-					exit(1);
-				}
+						exit(1);
 				/*
 				 * Gotta wait for child to die before makin
 				 * another one :(
 				 */
-				else if (pid > 0)
-					wait(NULL);
+					default:
+						wait(NULL);
+				}
 			}
 		}
 	}
