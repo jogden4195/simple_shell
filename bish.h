@@ -8,6 +8,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <stdarg.h>
+#include <signal.h>
 
 #define DELIMS " \t\r\n"
 
@@ -22,6 +23,7 @@ int _strlen(char *s);
 void _puts(char *str);
 int _putchar(char c);
 int print_number(int n);
+char *_env(void);
 
 typedef struct commando
 {
