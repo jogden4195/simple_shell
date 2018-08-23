@@ -65,8 +65,9 @@ int main(void)
 			if (_strcmp(tok, "exit") == 0)
 				shell_on = 0;
 
-			/* built-in function for cd
-			 * subtok is a variable for input AFTER where 
+			/*
+			 * built-in function for cd
+			 * subtok is a variable for input AFTER where
 			 * the tok variable cuts off;
 			 * if nothing is entered, it acts as though
 			 * cd $HOME is input
