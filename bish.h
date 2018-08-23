@@ -26,6 +26,12 @@ int print_number(int n);
 void _env(void);
 char *replace_arg(char *argv);
 
+/**
+ * struct commando - finds command then returns matching function
+ * @usr_cmd: command to find
+ * @replace_cmd: function to return
+ * Description: this is to be used in our shell for built-in commands
+ */
 typedef struct commando
 {
 	char *usr_cmd;

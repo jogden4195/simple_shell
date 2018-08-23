@@ -106,7 +106,6 @@ int main(void)
 					case -1:
 						perror("Error");
 
-
 					case 0:
 						while (tok)
 						{
