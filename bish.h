@@ -23,7 +23,7 @@ int _strlen(char *s);
 void _puts(char *str);
 int _putchar(char c);
 int print_number(int n);
-char *_env(void);
+void _env(void);
 
 typedef struct commando
 {

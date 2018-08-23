@@ -1,6 +1,11 @@
 #include "bish.h"
 
 /*
+ * Leo edit, 8/23 @ 10:21am:
+ * - fixed the infinite loop problem by checking for a couple of fail errors
+ * - fixed how Ctrl+D is supposed to function
+ * - cleaned up some betty errors
+ *
  * Leo edit, 8/21 @ 3:12pm:
  * - created _getenv to use for cd (refer to getenv.c for more info)
  * - used getcwd to print out current directory whenever prompt is present
@@ -38,6 +43,7 @@
 int main(void)
 {
 	int shell_on = 1, i = 0;
+	int ret_getline;
 	size_t buf_size = 100;
 	char buf[10];
 	char *usr_cmd = buf;
@@ -55,7 +61,12 @@ int main(void)
 		getcwd(cwd, sizeof(cwd));
 		_printf("*~b i s h~* :: %s~$ ", cwd);
 
-		getline(&usr_cmd, &buf_size, stdin);
+		ret_getline = getline(&usr_cmd, &buf_size, stdin);
+		if (!usr_cmd)
+			break;
+		if (ret_getline == -1)
+			break;
+
 		tok = strtok(usr_cmd, DELIMS);
 
 		if (tok == NULL)
