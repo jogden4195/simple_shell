@@ -28,8 +28,7 @@ void _env(void);
 typedef struct commando
 {
 	char *usr_cmd;
-	char * (*func)(char *ptr);
-	char *flags;
+	char *replace_cmd;
 } cmdo;
 
 #endif /* BISH_H */
