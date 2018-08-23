@@ -52,10 +52,6 @@ int main(void)
 	char *subtok;
 	pid_t pid;
 	char cwd[100];
-	cmdo cmd[] = {
-		{"ls", "/bin/ls"},
-		{NULL, NULL}
-	};
 
 	usr_cmd = malloc(buf_size);
 
@@ -120,6 +116,8 @@ int main(void)
 					 * i.e. ls -l -> ["ls", "-l"]
 					 */
 							argv[i] = malloc(_strlen(tok) + 1);
+							if (i == 0)
+								tok = replace_arg(tok);
 							_strcpy(argv[i], tok);
 							tok = strtok(NULL, DELIMS);
 							i++;
@@ -131,17 +129,6 @@ int main(void)
 				 */
 						argv[i] = NULL;
 
-						i = 0;
-						while (cmd[i].usr_cmd)
-						{
-							if (_strcmp(argv[0], cmd[i].usr_cmd) == 0)
-							{
-								printf("cmd[i].usr: %s\n", cmd[i].usr_cmd);
-								argv[0] = cmd[i].replace_cmd;
-							}
-							i++;
-						}
-						printf("%s\n", argv[0]);
 				/*
 				 * Making child process so bish will remain
 				 * open after completing execve.
