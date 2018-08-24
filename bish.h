@@ -25,6 +25,8 @@ int _putchar(char c);
 int print_number(int n);
 void _env(void);
 char *replace_arg(char *argv);
+char **array_maker(char *usr_cmd);
+void set_array(char *tok, char **cmd_array);
 
 /**
  * struct commando - finds command then returns matching function

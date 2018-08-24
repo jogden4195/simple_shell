@@ -42,12 +42,12 @@
 
 int main(void)
 {
-	int shell_on = 1, i = 0;
+	int shell_on = 1;
 	int ret_getline;
 	size_t buf_size = 100;
 	char buf[10];
 	char *usr_cmd = buf;
-	char *argv[100];
+	char **argv;
 	char *tok;
 	char *subtok;
 	pid_t pid;
@@ -107,27 +107,8 @@ int main(void)
 						perror("Error");
 
 					case 0:
-						while (tok)
-						{
-
-					/*
-					 * Parsing through the usr cmd to
-					 * get array of commands
-					 * i.e. ls -l -> ["ls", "-l"]
-					 */
-							argv[i] = malloc(_strlen(tok) + 1);
-							if (i == 0)
-								tok = replace_arg(tok);
-							_strcpy(argv[i], tok);
-							tok = strtok(NULL, DELIMS);
-							i++;
-						}
-
-				/*
-				 * Make the last element of the array so
-				 * execve works properly.
-				 */
-						argv[i] = NULL;
+						argv = array_maker(usr_cmd);
+						set_array(tok, argv);
 
 				/*
 				 * Making child process so bish will remain
