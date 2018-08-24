@@ -1,5 +1,11 @@
 #include "bish.h"
 
+/**
+ * main - creates a ~B I S H~ shell
+ *
+ * Return: 0
+ */
+
 /*
  * Leo edit, 8/23 @ 10:21am:
  * - fixed the infinite loop problem by checking for a couple of fail errors
@@ -103,32 +109,53 @@ int main(void)
 				pid = fork();
 				switch (pid)
 				{
+					/*
+					 * If pid = 0, something went wrong with
+					 * the forking process. We will shoot up
+					 * an error message in this situation.
+					 */
+
 					case -1:
 						perror("Error");
 
+					/*
+					 * When pid = 0, we are in the child
+					 * process. The child process does
+					 * most of the heavy lifting by actually
+					 * executing the usr's commands.
+					 */
+
 					case 0:
+
+					/*
+					 * These two functions, array_maker and
+					 * set_array, creates an array and sets
+					 * it's elements to the usr's command args,
+					 * respectively.
+					 */
+
 						argv = array_maker(usr_cmd);
 						set_array(tok, argv);
 
-				/*
-				 * Making child process so bish will remain
-				 * open after completing execve.
-				 */
+					/*
+					* Making child process so bish will remain
+					* open after completing execve.
+					*/
 						execve(argv[0], argv, NULL);
 						perror(argv[0]);
 
-				/*
-				 * if execve doesn't work out (eg if a
-				 * nonvalid command is given), we need
-				 * an exit statement so the child process
-				 * dies and we reenter the parent.
-				 */
+					/*
+					* if execve doesn't work out (eg if a
+					* nonvalid command is given), we need
+					* an exit statement so the child process
+					* dies and we reenter the parent.
+					*/
 
 						exit(1);
-				/*
-				 * Gotta wait for child to die before makin
-				 * another one :(
-				 */
+					/*
+					* Gotta wait for child to die before makin
+					* another one :(
+					*/
 					default:
 						wait(NULL);
 				}
