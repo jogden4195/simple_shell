@@ -104,6 +104,10 @@ int main(void)
 					getcwd(cwd, sizeof(cwd));
 				}
 			}
+			else if (_strcmp(tok, "env") == 0)
+			{
+				_env();
+			}
 			else
 			{
 				pid = fork();
