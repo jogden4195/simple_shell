@@ -64,7 +64,7 @@ int main(void)
 	{
 
 		getcwd(cwd, sizeof(cwd));
-		_printf("*~b i s h~* :: %s~$ ", cwd);
+		_printf("%s$ ", cwd);
 
 		ret_getline = getline(&usr_cmd, &buf_size, stdin);
 		if (!usr_cmd)
