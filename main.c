@@ -63,8 +63,7 @@ int main(void)
 	while (shell_on)
 	{
 
-		getcwd(cwd, sizeof(cwd));
-		_printf("%s$ ", cwd);
+		_printf("$ ");
 
 		ret_getline = getline(&usr_cmd, &buf_size, stdin);
 		if (!usr_cmd)
