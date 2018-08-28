@@ -2,6 +2,8 @@
 
 /**
  * main - creates a ~B I S H~ shell
+ * @argc: number of arguments going into main
+ * @argv: array of arguments going into main
  *
  * Return: 0
  */
