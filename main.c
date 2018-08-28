@@ -51,8 +51,7 @@ int main(void)
 	int shell_on = 1;
 	int ret_getline;
 	size_t buf_size = 100;
-	char buf[10];
-	char *usr_cmd = buf;
+	char *usr_cmd;
 	char **argv;
 	char *tok;
 	char *subtok;
@@ -74,8 +73,7 @@ int main(void)
 			break;
 
 		tok = strtok(usr_cmd, DELIMS);
-
-		if (tok == NULL)
+		if (!tok)
 			write(STDIN_FILENO, "", 1);
 		else
 		{
@@ -121,6 +119,7 @@ int main(void)
 
 					case -1:
 						perror("Error");
+						exit(1);
 
 					/*
 					 * When pid = 0, we are in the child
@@ -154,7 +153,7 @@ int main(void)
 					* an exit statement so the child process
 					* dies and we reenter the parent.
 					*/
-
+						free(argv);
 						exit(1);
 					/*
 					* Gotta wait for child to die before makin
