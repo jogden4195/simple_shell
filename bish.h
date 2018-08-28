@@ -1,5 +1,6 @@
 #ifndef BISH_H
 #define BISH_H
+#define _GNU_SOURCE
 
 #include <unistd.h>
 #include <sys/types.h>
