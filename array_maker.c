@@ -14,18 +14,16 @@ char **array_maker(char *usr_cmd)
 
 	while (usr_cmd[i])
 	{
-		if (usr_cmd[i] == ' ' || usr_cmd[i] == '\n' || usr_cmd[i] == '\t')
+		if (usr_cmd[i] != ' ' || usr_cmd[i] != '\n' || usr_cmd[i] != '\t')
 			count++;
 		i++;
 	}
 
 	argv = malloc(sizeof(char *) * count);
-
-	if (argv == NULL)
+	if (!argv)
 	{
 		perror("Error");
 		exit(1);
 	}
-
 	return (argv);
 }
