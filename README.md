@@ -70,7 +70,7 @@ Jenn Ogden - https://github.com/jogden4195
 | replace_arg | Replaces shell variables with the pathway to their executables | char *argv | Argv array with replaced variable in it | char *replace_arg(char *argv) |
 | set_array | Sets the user's commands into newly made argv array | char *tok, char **cmd_array | none | void set_array(char *tok, char **cmd_array) |
 
-##Compilation And Usage
+## Compilation And Usage
 
 ```
 $ git clone [repository link]
@@ -80,4 +80,4 @@ $ ./bish
 [enter ~b i s h~ commands]
 ```
 
-##~ b i s h~ Features And Commands
+## ~ b i s h~ Features And Commands

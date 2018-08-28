@@ -46,13 +46,13 @@
  * - Need to figure out proper error codes
  */
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	int shell_on = 1;
 	int ret_getline;
 	size_t buf_size = 100;
 	char *usr_cmd;
-	char **argv;
+	char **usr_arg;
 	char *tok;
 	char *subtok;
 	pid_t pid;
@@ -70,7 +70,6 @@ int main(void)
 			break;
 		if (ret_getline == -1)
 			break;
-
 		tok = strtok(usr_cmd, DELIMS);
 		if (!tok)
 			write(STDIN_FILENO, "", 1);
@@ -136,15 +135,16 @@ int main(void)
 					 * respectively.
 					 */
 
-						argv = array_maker(usr_cmd);
-						set_array(tok, argv);
+						usr_arg = array_maker(usr_cmd);
+						set_array(tok, usr_arg);
 
 					/*
 					* Making child process so bish will remain
 					* open after completing execve.
 					*/
-						execve(argv[0], argv, NULL);
-						perror(argv[0]);
+						execve(usr_arg[0], usr_arg, NULL);
+						getcwd(cwd, sizeof(cwd));
+						_printf("%s: 1: %s: not found\n", argv[0], usr_arg[0]);
 
 					/*
 					* if execve doesn't work out (eg if a
@@ -152,7 +152,7 @@ int main(void)
 					* an exit statement so the child process
 					* dies and we reenter the parent.
 					*/
-						free(argv);
+						free(usr_arg);
 						exit(1);
 					/*
 					* Gotta wait for child to die before makin
