@@ -48,7 +48,7 @@
  * - Need to figure out proper error codes
  */
 
-int main(int argc, char *argv[])
+int main(int __attribute__((unused)) argc, char *argv[])
 {
 	int shell_on = 1;
 	int ret_getline;
