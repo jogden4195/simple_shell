@@ -54,6 +54,30 @@ Jenn Ogden - https://github.com/jogden4195
 
 ## Function Descriptions
 
-| Function | Description | Arguments | Return Value | Example |
-| -------- | ----------- | --------- | ------------ | ------- |
-| main | Brings up a UNIX command line interpreter. Refer to Bish Features and Commands section for a full list of features and commands. | None | 0 upon success |   |
+| Function | Description | Arguments | Return Value | Prototype |
+| -------- | ----------- | --------- | ------------ | --------- |
+| main | Brings up a UNIX command line interpreter. Refer to Bish Features and Commands section for a full list of features and commands. | None | 0 upon success | int main(void) |
+| array_maker | Creates an array that will store the user's commands | char *usr_cmd | char **argv | char **array_maker(char *usr_cmd) |
+| _strcmp | Compares two strings | char *str1, char *str2 | The difference between str1 and str2 | int _strcmp(char *str1, char *str2) |
+| _strlen | Gets the length of a string | char *str | The length of the string | int _strlen(char *str) |
+| _strcpy | Copies a source string to a destination string | char *dest, char *src | A pointer to the destination string |char _strcpy(char *dest, char *src) |
+| _getenv | Gets the value of the environment variable | const char *name | Location of the matching variable if success; 0 if not found | char *_getenv(const char *name) |
+| _printf | Prints out a string, integer, and/or character. | const char *format, ...  | 0 upon success | int _printf(const char *format, ...) |
+| _puts | Prints out a string | char *str | none | void _puts(char *str) |
+| _putchar | Prints out a character | char c | 0 upon success | int _putchar(char c) |
+| print_number | Prints out a number | int n | 0 upon success | int print_number(int n) |
+| _env | Prints out the environment variable | none | none | void _env(void) |
+| replace_arg | Replaces shell variables with the pathway to their executables | char *argv | Argv array with replaced variable in it | char *replace_arg(char *argv) |
+| set_array | Sets the user's commands into newly made argv array | char *tok, char **cmd_array | none | void set_array(char *tok, char **cmd_array) |
+
+##Compilation And Usage
+
+```
+$ git clone [repository link]
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o bish
+$ ./bish
+
+[enter ~b i s h~ commands]
+```
+
+##~ b i s h~ Features And Commands
