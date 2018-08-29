@@ -12,10 +12,9 @@ void set_array(char *tok, char **cmd_array)
 	int i = 0;
 	char *path;
 	
-	path = _getenv("PATH");
 	while (tok)
 	{
-		if (i == 0 && path != NULL)
+		if (i == 0)
 			tok = replace_arg(tok);
 		cmd_array[i] = tok;
 		tok = strtok(NULL, DELIMS);
