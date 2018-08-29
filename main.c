@@ -81,7 +81,10 @@ int main(int __attribute__((unused)) argc, char *argv[])
 		else
 		{
 			if (_strcmp(tok, "exit") == 0)
-				shell_on = 0;
+			{
+				free(usr_cmd);
+				exit (0);
+			}
 
 			/*
 			 * built-in function for cd
