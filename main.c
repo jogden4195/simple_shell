@@ -67,7 +67,8 @@ int main(int __attribute__((unused)) argc, char *argv[])
 
 		line++;
 		if (isatty(0) == 1)
-			_printf("$ ");
+			getcwd(cwd, sizeof(cwd));
+			_printf("*~b i s h ~* :: %s $ ", cwd);
 
 		ret_getline = getline(&usr_cmd, &buf_size, stdin);
 		if (!usr_cmd)
@@ -100,8 +101,19 @@ int main(int __attribute__((unused)) argc, char *argv[])
 				}
 				else
 				{
-					chdir(subtok);
-					getcwd(cwd, sizeof(cwd));
+					/*
+					 * need to expand on this later
+					 */
+					if (_strcmp(subtok, "-") == 0)
+					{
+						getcwd(cwd, sizeof(cwd));
+						chdir(_getenv("OLDPWD"));
+					}
+					else
+					{
+						chdir(subtok);
+						getcwd(cwd, sizeof(cwd));
+					}
 				}
 			}
 			else if (_strcmp(tok, "env") == 0)
