@@ -50,7 +50,7 @@
 
 int main(int __attribute__((unused)) argc, char *argv[])
 {
-	int shell_on = 1;
+	int shell_on = 1, line = 0;
 	int ret_getline;
 	size_t buf_size = 100;
 	char *usr_cmd;
@@ -65,7 +65,9 @@ int main(int __attribute__((unused)) argc, char *argv[])
 	while (shell_on)
 	{
 
-		_printf("$ ");
+		line++;
+		if (isatty(0) == 1)
+			_printf("$ ");
 
 		ret_getline = getline(&usr_cmd, &buf_size, stdin);
 		if (!usr_cmd)
@@ -145,8 +147,7 @@ int main(int __attribute__((unused)) argc, char *argv[])
 					* open after completing execve.
 					*/
 						execve(usr_arg[0], usr_arg, NULL);
-						getcwd(cwd, sizeof(cwd));
-						_printf("%s: 1: %s: not found\n", argv[0], usr_arg[0]);
+						_printf("%s: %i: %s: not found\n", argv[0], line, usr_arg[0]);
 
 					/*
 					* if execve doesn't work out (eg if a
