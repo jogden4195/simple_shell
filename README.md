@@ -56,7 +56,7 @@ Jenn Ogden - https://github.com/jogden4195
 
 | Function | Description | Arguments | Return Value | Prototype |
 | -------- | ----------- | --------- | ------------ | --------- |
-| main | Brings up a UNIX command line interpreter. Refer to Bish Features and Commands section for a full list of features and commands. | None | 0 upon success | int main(void) |
+| main | Brings up a UNIX command line interpreter. Refer to ** How To Use *~b i s h~* ** section for a full list of features and commands. | None | 0 upon success | int main(void) |
 | array_maker | Creates an array that will store the user's commands | char *usr_cmd | char **argv | char **array_maker(char *usr_cmd) |
 | _strcmp | Compares two strings | char *str1, char *str2 | The difference between str1 and str2 | int _strcmp(char *str1, char *str2) |
 | _strlen | Gets the length of a string | char *str | The length of the string | int _strlen(char *str) |
@@ -77,7 +77,63 @@ $ git clone [repository link]
 $ gcc -Wall -Werror -Wextra -pedantic *.c -o bish
 $ ./bish
 
-[enter ~b i s h~ commands]
+[enter *~b i s h~* commands]
 ```
 
-## ~ b i s h~ Features And Commands
+## How To Use *~ b i s h ~*
+
+### How To Enter A Command
+
+All commands for the bish shell follow this syntax: `command_name {arguments}`. where **command_name** is the name of the command you want to execute (e.g. `ls`, `echo`, etc.) and **{arguments}** are the arguments you are giving to that command. For example,
+
+``` echo "Hello World" ```
+
+in the above command, `echo` is the name of the command we are trying to execute and `"Hello World"` is the argument we are feeding into the `echo` command.
+
+### *~ b i s h ~* Commands
+
+| Command | What It Does |
+| ------- | ------------ |
+| ls | Displays files and directories in current working directory. |
+| cd | Changes directory. |
+| echo | Prints out arguments to standard output. |
+| cat | Prints out content of a file to standard output. |
+| chgrp | Changes file group ownership. |
+| chmod | Changes file access permissions. |
+| chown | Changes file owner and group. |
+| cp | Copies files and directories. |
+| date | Prints or sets the system data and time. |
+| dd | Converts and copies a file. |
+| df | Reports filesystem disk space usage. |
+| dmesg | Prints or controls the kernel message buffer. |
+| env | Prints out list of all environment variables. |
+| exit | Exits out of *~ b i s h ~*. |
+| false | Does nothing, unsuccessfully. |
+| hostname | Shows or sets the system's host name. |
+| kill | Sends signals to processes. |
+| ln | Makes links between files. |
+| login | Begins a session on the system. |
+| mkdir | Makes directories. |
+| mknod | Makes block or character special files. |
+| more | Pages through text. |
+| mount | Mounts a filesystem. |
+| mv | Moves and/or renames a file. |
+| ps | Reports process status. |
+| pwd | Prints the name of the current working directory. |
+| rm | Removes files or directories. |
+| rmdir | Removes empty directories. |
+| sed | The 'sed' stream editor. |
+| sh | A POSIX compatible command shell. |
+| su | Changes user's ID. |
+| true | Does nothing, successfully. |
+| uname | Prints system information. |
+
+### Exiting *~ b i s h ~*
+
+To exit out of the bish shell, simply enter the command
+
+```
+exit
+```
+
+To exit out of a process, just press `ctrl d`.
