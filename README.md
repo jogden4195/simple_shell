@@ -56,7 +56,7 @@ Jenn Ogden - https://github.com/jogden4195
 
 | Function | Description | Arguments | Return Value | Prototype |
 | -------- | ----------- | --------- | ------------ | --------- |
-| main | Brings up a UNIX command line interpreter. Refer to ** How To Use *~b i s h~* ** section for a full list of features and commands. | None | 0 upon success | int main(void) |
+| main | Brings up a UNIX command line interpreter. Refer to  How To Use *~b i s h~* section for a full list of features and commands. | None | 0 upon success | int main(void) |
 | array_maker | Creates an array that will store the user's commands | char *usr_cmd | char **argv | char **array_maker(char *usr_cmd) |
 | _strcmp | Compares two strings | char *str1, char *str2 | The difference between str1 and str2 | int _strcmp(char *str1, char *str2) |
 | _strlen | Gets the length of a string | char *str | The length of the string | int _strlen(char *str) |
@@ -84,7 +84,7 @@ $ ./bish
 
 ### How To Enter A Command
 
-All commands for the bish shell follow this syntax: `command_name {arguments}`. where **command_name** is the name of the command you want to execute (e.g. `ls`, `echo`, etc.) and **{arguments}** are the arguments you are giving to that command. For example,
+All commands for the bish shell follow this syntax: `command_name {arguments}`, where **command_name** is the name of the command you want to execute (e.g. `ls`, `echo`, etc.) and **{arguments}** are the arguments you are giving to that command. For example,
 
 ``` echo "Hello World" ```
 
