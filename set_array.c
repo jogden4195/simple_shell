@@ -10,7 +10,6 @@
 void set_array(char *tok, char **cmd_array)
 {
 	int i = 0;
-	char *path;
 	
 	while (tok)
 	{
