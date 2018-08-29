@@ -67,8 +67,8 @@ int main(int __attribute__((unused)) argc, char *argv[])
 
 		line++;
 		if (isatty(0) == 1)
-			getcwd(cwd, sizeof(cwd));
-			_printf("*~b i s h ~* :: %s $ ", cwd);
+		  /*getcwd(cwd, sizeof(cwd));*/
+			_printf("*~b i s h ~* $ ");
 
 		ret_getline = getline(&usr_cmd, &buf_size, stdin);
 		if (!usr_cmd)
