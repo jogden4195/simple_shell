@@ -52,6 +52,8 @@ int main(int __attribute__((unused)) argc, char *argv[])
 {
 	int shell_on = 1, line = 0;
 	int ret_getline;
+	int stat;
+	int exit_stat = 0;
 	size_t buf_size = 100;
 	char *usr_cmd;
 	char **usr_arg;
@@ -64,27 +66,23 @@ int main(int __attribute__((unused)) argc, char *argv[])
 
 	while (shell_on)
 	{
-
 		line++;
 		if (isatty(0) == 1)
-		  /*getcwd(cwd, sizeof(cwd));*/
 			_printf("*~b i s h ~* $ ");
-
 		ret_getline = getline(&usr_cmd, &buf_size, stdin);
+
 		if (!usr_cmd)
 			break;
+
 		if (ret_getline == -1)
 			break;
+
 		tok = strtok(usr_cmd, DELIMS);
+
 		if (!tok)
 			write(STDIN_FILENO, "", 1);
 		else
 		{
-			if (_strcmp(tok, "exit") == 0)
-			{
-				free(usr_cmd);
-				exit (0);
-			}
 
 			/*
 			 * built-in function for cd
@@ -94,7 +92,7 @@ int main(int __attribute__((unused)) argc, char *argv[])
 			 * cd $HOME is input
 			 */
 
-			else if (_strcmp(tok, "cd") == 0)
+			if (_strcmp(tok, "cd") == 0)
 			{
 				subtok = strtok(0, DELIMS);
 				if (!subtok)
@@ -123,6 +121,12 @@ int main(int __attribute__((unused)) argc, char *argv[])
 			{
 				_env();
 			}
+
+			else if (_strcmp(tok, "exit") == 0)
+			{
+				free(usr_cmd);
+				exit (exit_stat);
+			}
 			else
 			{
 				pid = fork();
@@ -136,7 +140,8 @@ int main(int __attribute__((unused)) argc, char *argv[])
 
 					case -1:
 						perror("Error");
-						exit(1);
+						exit_stat = 1;
+						exit (exit_stat);
 
 					/*
 					 * When pid = 0, we are in the child
@@ -149,8 +154,8 @@ int main(int __attribute__((unused)) argc, char *argv[])
 
 					/*
 					 * These two functions, array_maker and
-					 * set_array, creates an array and sets
-					 * it's elements to the usr's command args,
+					 * set_array, create an array and set
+					 * its elements to the usr's command args,
 					 * respectively.
 					 */
 
@@ -171,13 +176,16 @@ int main(int __attribute__((unused)) argc, char *argv[])
 					* dies and we reenter the parent.
 					*/
 						free(usr_arg);
-						exit(1);
+						exit_stat = 127;
+						exit (exit_stat);
 					/*
 					* Gotta wait for child to die before makin
 					* another one :(
 					*/
 					default:
-						wait(NULL);
+						wait(&stat);
+						if (WIFEXITED(stat))
+							exit_stat = WEXITSTATUS(stat);
 				}
 			}
 		}
