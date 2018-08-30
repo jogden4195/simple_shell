@@ -1,0 +1,91 @@
+.TH BISH 1 "AUGUST 29, 2018" Linux "Bish"
+.SH NAME
+*~ b i s h ~*
+.SH SYNOPSIS
+.B *~ b i s h ~* [options] [file]
+.SH DESCRIPTION
+.B *~ b i s h ~*
+is a custom shell created for a project at Holberton School. It handles basic shell commands from standard input. See Special Commands below for more info.
+.SH SPECIAL COMMANDS
+.IP ls 	
+Displays files and directories in current working directory.
+.IP cd 	
+Changes directory.
+.IP echo 	
+Prints out arguments to standard output.
+.IP cat 	
+Prints out content of a file to standard output.
+.IP chgrp 	
+Changes file group ownership.
+.IP chmod 	
+Changes file access permissions.
+.IP chown 	
+Changes file owner and group.
+.IP cp 	
+Copies files and directories.
+.IP date 	
+Prints or sets the system data and time.
+.IP dd 	
+Converts and copies a file.
+.IP df 	
+Reports filesystem disk space usage.
+.IP dmesg 	
+Prints or controls the kernel message buffer.
+.IP env 	
+Prints out list of all environment variables.
+.IP exit 	
+Exits out of *~ b i s h ~*.
+.IP false 	
+Does nothing, unsuccessfully.
+.IP hostname 	
+Shows or sets the system's host name.
+.IP kill 	
+Sends signals to processes.
+.IP ln 	
+Makes links between files.
+.IP login 	
+Begins a session on the system.
+.IP mkdir 	
+Makes directories.
+.IP mknod 	
+Makes block or character special files.
+.IP more 	
+Pages through text.
+.IP mount 	
+Mounts a filesystem.
+.IP mv 	
+Moves and/or renames a file.
+.IP ps 	
+Reports process status.
+.IP pwd 	
+Prints the name of the current working directory.
+.IP rm 	
+Removes files or directories.
+.IP rmdir 	
+Removes empty directories.
+.IP sed 	
+The 'sed' stream editor.
+.IP sh 	
+A POSIX compatible command shell.
+.IP su 	
+Changes user's ID.
+.IP true 	
+Does nothing, successfully.
+.IP uname 	
+Prints system information.
+.SH EXAMPLES
+If you wanted to change directory, you'd type:
+.RS
+cd directoryname
+.RE
+and it will cd into that directory. Try checking if it succeeded by typing:
+.RS
+pwd
+.RE
+and it should display the present working directory.
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Leo Byeon <leo.byeon@holbertonschool.com>
+.P
+Jenn Ogden <jennifer.ogden@holbertonschool.com>
