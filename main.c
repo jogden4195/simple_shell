@@ -184,10 +184,8 @@ int main(int __attribute__((unused)) argc, char *argv[])
 					*/
 					default:
 						wait(&stat);
-						/*
-						 * if (WIFEXITED(stat))
-						 * exit_stat = WEXITSTATUS(stat);
-						 */
+						if (WIFEXITED(stat))
+							exit_stat = WEXITSTATUS(stat);
 				}
 			}
 		}
