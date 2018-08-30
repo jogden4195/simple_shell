@@ -125,7 +125,7 @@ int main(int __attribute__((unused)) argc, char *argv[])
 			else if (_strcmp(tok, "exit") == 0)
 			{
 				free(usr_cmd);
-				exit (exit_stat);
+				exit(exit_stat);
 			}
 			else
 			{
@@ -141,7 +141,7 @@ int main(int __attribute__((unused)) argc, char *argv[])
 					case -1:
 						perror("Error");
 						exit_stat = 1;
-						exit (exit_stat);
+						exit(exit_stat);
 
 					/*
 					 * When pid = 0, we are in the child
@@ -177,15 +177,17 @@ int main(int __attribute__((unused)) argc, char *argv[])
 					*/
 						free(usr_arg);
 						exit_stat = 127;
-						exit (exit_stat);
+						exit(exit_stat);
 					/*
 					* Gotta wait for child to die before makin
 					* another one :(
 					*/
 					default:
 						wait(&stat);
-						if (WIFEXITED(stat))
-							exit_stat = WEXITSTATUS(stat);
+						/*
+						 * if (WIFEXITED(stat))
+						 * exit_stat = WEXITSTATUS(stat);
+						 */
 				}
 			}
 		}
